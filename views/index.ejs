@@ -1,0 +1,77 @@
+
+<!-- include header -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD application</title>
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body>
+<div id="header">
+    <nav>
+        <div class="container">
+            <div class="text-center">
+                <a href="/" class="nav-brand text-dark">User Management System</a>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<!-- /include header -->
+
+  <!-- Main Site -->
+  <main id="site-main">
+    <div class="container">
+        <div class="box-nav d-flex justify-between">
+            <a href="/addUser" class="border-shadow">
+                <span class="text-gradient">New User <i class="fas fa-user"></i></span>
+            </a>
+        </div>
+
+        <!-- form handling -->
+        <form action="/" method="POST">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>@Email</th>
+                        <th>Gender</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%for (i = 0; i < users.length; i++) {%>
+
+                        <tr>
+                                        <td><%=i+1%></td>
+                                        <td><%=users[i].name %></td>
+                                        <td><%=users[i].email%></td>
+                                        <td><%=users[i].gender%></td>
+                                        <td><%=users[i].status%></td>
+                                        <td>
+                                            <a href="/api/users/<%=users[i]._id%>" class="btn border-shadow update">
+                                                <span class="text-gradient"><i class="fa-thin fa-user"></i></span>
+                                            </a>
+                                            <a class="btn border-shadow delete" href="/api/users/delete/<%=users[i]._id%>">
+                                                <span class="text-gradient"><i class="fa-solid fa-pencil"></i></span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                <%}%>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</main>
+
+<!-- /Main Site -->
+
+</body>
+</html>
+<!-- /include footer -->
